@@ -16,24 +16,46 @@ console.log("TCL: wCount", wCount)
 // code along 2
 //witout constructor
 
-const teleV = {
+const tV = {
     type: 'LED',
-    resolution: '720p',
-    power: 250,
-    togglePower: function (toggle) {
-        if (toggle.toLowerCase() == 'on') {
-            return 'Turned On!'
+    resolution: '1080p',
+    power: 200,
+    model: 'samsung',
+    currentStatOnOff: 'Off',
+    currentVol: 10,
+    currentChannel: 0,
+    togglePower: function(boolX){ // Function(Method) to turn the tv on or off
+        if(boolX){
+            tV.currentStatOnOff = 'On'
+            tV.power = 200
+            return 'Turned On'
         } else {
-            return 'Currently Turned Off.'
+            tV.currentStatOnOff = 'Off'
+            tV.power = 0
+            return 'Turned Off'
         }
     },
-    incVol: function () {
-        return `Volume Increased`
+    toggleChannel: function(channel){
+        tV.currentChannel = channel
+        return `You are currently browsing channel number ${channel}`
     },
-    decVol: function () {
-        return `Volume Decreased`
+    toggleVol: function(updown, volPer){
+        if (updown.toLowerCase() == 'increase') {
+            tV.currentVol += volPer
+            return `volume increased by ${volPer} percent.`
+        } else {
+            tV.currentVol -= volPer
+            return `volume decreased by ${volPer} percent.`
+        }
     }
 }
+// console.log(tV)
+// console.log(tV.togglePower('on'))
+// console.log(tV)
+console.log(tV.toggleVol('increase', 20))
+console.log(tV)
+console.log(tV.toggleVol('',10))
+console.log(tV)
 
 //using this 
 
